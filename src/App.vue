@@ -49,6 +49,8 @@ export default {
       type: "warning",
       message: "数据接口源于网络，仅供参考！"
     });
+
+    this.$router.push({name: 'trend'});
   }
 };
 </script>
