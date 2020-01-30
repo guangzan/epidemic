@@ -50,7 +50,7 @@ export default {
       message: "数据接口源于网络，仅供参考！"
     });
 
-    this.$router.push({name: 'trend'});
+    this.$router.push({name: 'trend'});  // bad
   }
 };
 </script>
