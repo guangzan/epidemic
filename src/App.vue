@@ -3,7 +3,7 @@
     <keep-alive>
       <router-view />
     </keep-alive>
-    <van-tabbar route>
+    <van-tabbar route @change="changeSideBar">
       <van-tabbar-item replace to="/trend">
         <span>趋势</span>
         <van-icon
@@ -21,7 +21,7 @@
         />
       </van-tabbar-item>
       <van-tabbar-item replace to="/message" icon="search">
-        <span>消息</span>
+        <span>信息</span>
         <van-icon
           slot="icon"
           slot-scope="props"
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { Notify } from "vant";
+// import { Notify } from "vant";
 export default {
   name: "app",
   components: {},
@@ -44,25 +44,42 @@ export default {
           active: "fire",
           inactive: "fire-o"
         },
-        msg: {
-          active: "volume",
-          inactive: "volume-o"
-        },
         news: {
           active: "location",
           inactive: "location-o"
+        },
+        msg: {
+          active: "label",
+          inactive: "label-o"
         }
       }
     };
   },
 
   mounted() {
-    Notify({
-      type: "success",
-      message: "数据接口源于网络，仅供参考！"
-    });
-
+    const notify = this.$vantTools.notify;
+    notify("数据接口源于网络，仅供参考！","success");
     this.$router.push("/trend");
+  },
+
+  methods: {
+    // 切换 sidebar
+    changeSideBar(active) {
+      const notify = this.$vantTools.notify;
+      this.$vantTools.clearNotify();
+      const actions = {
+        1: () => {
+          notify("点击右上角切换省份", "primary");
+        },
+        2: () => {
+          // notify("信息", "primary");
+        },
+        5: () => {
+          notify("错误", "danger");
+        }
+      };
+      actions[active]();
+    }
   }
 };
 </script>
@@ -81,7 +98,7 @@ export default {
 }
 
 .van-nav-bar {
-  /* background-color: #13C2C2; */
+  /* background-color: #F9F0FF; */
 }
 
 .van-nav-bar__title {

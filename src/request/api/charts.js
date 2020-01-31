@@ -21,8 +21,7 @@ const charts = {
   // 全国数据
   province() {
     return get(
-      `${base.sq}/province`,
-      { country: '中国' }
+      `${base.sq}/area`,
     );
   }
 }

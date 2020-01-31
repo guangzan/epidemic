@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import api from './request/api/index'
 import router from './router'
+import vantTools from '@/assets/js/vantTools'
+import antvTools from '@/assets/js/antvTools'
+
 import {
   Panel,
   Toast,
@@ -17,7 +20,11 @@ import {
   List,
   Lazyload,
   NavBar,
+  Collapse,
+  CollapseItem,
 } from 'vant'
+
+
 
 
 
@@ -36,9 +43,16 @@ Vue.use(Image);
 Vue.use(List);
 Vue.use(Lazyload);
 Vue.use(NavBar);
+Vue.use(Collapse);
+Vue.use(CollapseItem);
 
 Vue.config.productionTip = false
 Vue.prototype.$api = api
+Vue.prototype.$vantTools = vantTools
+Vue.prototype.$antvTools = antvTools
+
+
+
 
 
 

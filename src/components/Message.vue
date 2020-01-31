@@ -4,17 +4,24 @@
     <Panel :panelData="panelData">
       <Skeleton :loading="loading">
         <van-cell-group>
-          <van-cell title="说明" :value="message.generalRemark" />
-          <van-cell title="病毒名称" :value="message.virus" />
-          <van-cell title="传染源" :value="message.infectSource" />
-          <van-cell title="传播途径" :value="message.passWay" />
-          <van-cell title="确诊人数" :value="message.confirmedCount" />
-          <van-cell title="疑似感染人数" :value="message.suspectedCount" />
-          <van-cell title="治愈人数" :value="message.curedCount" />
-          <van-cell title="死亡人数" :value="message.deadCount" />
-          <van-cell title="易感人群" :value="message.remark1" />
-          <van-cell title="潜伏期" :value="message.remark2" />
-          <van-cell title="更新时间" :value="message.updateTime" />
+          <!-- <van-cell title="说明" :value="message.generalRemark">
+            <van-icon slot="icon" name="volume-o" size="1.5em" style="line-height: 1.2em;" />
+          </van-cell> -->
+
+          <van-collapse accordion v-model="activeNames">
+            <van-collapse-item icon='volume-o' title="说明" name="generalRemark">{{message.generalRemark}}</van-collapse-item>
+            <van-collapse-item icon='warn-o' title="病毒名称" name="virus">{{message.virus}}</van-collapse-item>
+            <van-collapse-item icon='warn-o' title="传染源" name="infectSource">{{message.infectSource}}</van-collapse-item>
+            <van-collapse-item icon='warn-o' title="传播途径" name="passWay">{{message.passWay}}</van-collapse-item>
+            <van-collapse-item icon='friends-o' title="易感人群" name="remark1">{{message.remark1}}</van-collapse-item>
+            <van-collapse-item icon='todo-list-o' title="潜伏期" name="remark2">{{message.remark2}}</van-collapse-item>
+          </van-collapse>
+
+          <van-cell title="确诊人数" icon="warning-o" :value="message.confirmedCount" />
+          <van-cell title="疑似人数" icon="question-o" :value="message.suspectedCount" />
+          <van-cell title="治愈人数" icon="smile-o" :value="message.curedCount" />
+          <van-cell title="死亡人数" icon="close" :value="message.deadCount" />
+          <van-cell title="更新时间" icon="clock-o" :value="message.updateTime" />
         </van-cell-group>
       </Skeleton>
     </Panel>
@@ -24,7 +31,7 @@
 <script>
 import Panel from "@/components/common/Panel";
 import Skeleton from "@/components/common/Skeleton";
-import { formatDate } from "@/assets/tools";
+import { formatDate } from "@/assets/js/tools";
 
 export default {
   components: {
@@ -34,8 +41,9 @@ export default {
 
   data() {
     return {
+      activeNames: 'generalRemark',
       panelData: {
-        title: "📜 消息",
+        title: "消息",
         desc: "病毒研究情况以及全国疫情概览",
         status: ""
       },
@@ -81,7 +89,7 @@ export default {
         } = res.results[0]);
 
         const updateTime = this.message.updateTime;
-        this.message.updateTime = formatDate(updateTime, 'Y年m月d日');
+        this.message.updateTime = formatDate(updateTime, "Y年m月d日");
 
         this.loading = false;
       });

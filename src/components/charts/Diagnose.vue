@@ -9,7 +9,7 @@
 <script>
 import Panel from "@/components/common/Panel";
 import F2 from "@antv/f2/lib/index";
-import { formatDate } from "@/assets/tools";
+import { formatDate } from "@/assets/js/tools";
 import ScrollBar from "@antv/f2/lib/plugin/scroll-bar";
 import pan from "@antv/f2/lib/interaction/pan";
 
@@ -33,7 +33,7 @@ export default {
         { genre: "1月27日", sold: 4515 },
         { genre: "1月28日", sold: 5974 },
         { genre: "1月29日", sold: 7711 },
-        { genre: "1月30日", sold: 9097 }, // 31日 7：57
+        { genre: "1月30日", sold: 9097 } // 31日 7：57
       ]
     };
   },
@@ -58,19 +58,59 @@ export default {
       });
     },
 
-    // 创建图标
+    // 创建图表
     createChart() {
+      const data = this.data;
+
       const chart = new F2.Chart({
         id: "diagnose",
         plugins: [ScrollBar, pan],
         pixelRatio: window.devicePixelRatio
       });
 
-      chart
-        .source(this.data)
-        .interval()
-        .position("genre*sold")
-        .color("genre");
+      chart.source(data, {
+        value: {
+          tickCount: 5,
+          min: 0
+        },
+        date: {
+          type: "timeCat",
+          range: [0, 1],
+          tickCount: 3
+        }
+      });
+
+      chart.tooltip({
+        custom: true,
+        showXTip: true,
+        showYTip: true,
+        snap: true,
+        crosshairsType: "xy",
+        crosshairsStyle: {
+          lineDash: [2]
+        }
+      });
+
+      chart.axis("date", {
+        label: function label(text, index, total) {
+          const textCfg = {};
+          if (index === 0) {
+            textCfg.textAlign = "left";
+          } else if (index === total - 1) {
+            textCfg.textAlign = "right";
+          }
+          return textCfg;
+        }
+      });
+
+      chart.line().position("genre*sold");
+
+      // 柱状图
+      // chart
+      //   .source(data)
+      //   .interval()
+      //   .position("genre*sold")
+      //   .color("genre");
 
       chart.render();
     }
@@ -81,7 +121,6 @@ export default {
 
 <style scoped>
 .van-panel__content {
-  padding: 0!important
-
+  padding: 0 !important;
 }
 </style>

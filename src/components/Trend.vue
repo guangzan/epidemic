@@ -1,8 +1,10 @@
 <template>
   <div id="trend">
     <van-nav-bar title="趋势" fixed />
-    <ProvinceConfirmed />
+    <ProvinceDiagnose />
     <Diagnose />
+    <CountryFour />
+    <ProvinceTrend />
     <!-- <Cure />
     <Correlation />-->
   </div>
@@ -10,16 +12,20 @@
 
  <script>
 import Diagnose from "@/components/charts/Diagnose";
+import ProvinceDiagnose from "@/components/charts/ProvinceDiagnose";
+import ProvinceTrend from "@/components/charts/ProvinceTrend";
+import CountryFour from "@/components/charts/CountryFour";
 // import Cure from "@/components/charts/Cure";
 // import Correlation from "@/components/charts/Correlation";
-import ProvinceConfirmed from "@/components/charts/ProvinceConfirmed";
 
 export default {
   components: {
     Diagnose,
     // Cure,
     // Correlation,
-    ProvinceConfirmed
+    ProvinceDiagnose,
+    ProvinceTrend,
+    CountryFour,
   }
 };
 </script>

@@ -19,16 +19,18 @@
 </template>
 
 <script>
-import F2 from "@antv/f2";
-import areaList from "@/assets/area";
+import F2 from "@antv/f2/lib/index-all";
+import areaList from "@/assets/js/area";
 import { Notify } from "vant";
+import ScrollBar from "@antv/f2/lib/plugin/scroll-bar";
+import pan from "@antv/f2/lib/interaction/pan";
 
 export default {
   data() {
     return {
       visibleItemCount: 6,
       panelData: {
-        title: "各省份感染人数",
+        title: "该省份人数",
         desc: "实时数据",
         status: "山东省"
       },
@@ -67,13 +69,12 @@ export default {
       const area = this.$api.charts.area;
 
       area(this.province).then(res => {
+        console.log(res);
         if (res.results[0] === undefined) {
           Notify("暂无数据");
           return;
         }
         const data = res.results[0].cities;
-        console.log(res);
-
         this.data = data;
         this.createChart();
       });
@@ -83,7 +84,9 @@ export default {
     createChart() {
       const chart = new F2.Chart({
         id: "cure",
-        padding: 'auto',
+        padding: "auto",
+        // animate: true,
+        // plugins: [ScrollBar, pan],
         pixelRatio: window.devicePixelRatio // 指定分辨率
       });
 
@@ -92,6 +95,17 @@ export default {
         .interval()
         .position("cityName*confirmedCount")
         .color("cityName");
+
+      // chart.scrollBar({
+      //   mode: "x",
+      //   xStyle: {
+      //     backgroundColor: "#e8e8e8",
+      //     fillerColor: "#808080",
+      //     offsetY: 0
+      //   }
+      // });
+
+      // chart.interaction("pan");
 
       chart.render();
     }

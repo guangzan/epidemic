@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="动态" fixed right-text="选择省份" @click-right="areaToggle">
+    <van-nav-bar title="动态" fixed right-text="切换省份" @click-right="areaToggle">
       <!-- <van-icon name="location" slot="right">选择省份</van-icon> -->
     </van-nav-bar>
     <van-panel :title="panelData.title" :desc="panelData.desc" :status="panelData.status">
@@ -37,10 +37,10 @@
 </template>
 
 <script>
-import areaList from "@/assets/area";
+import areaList from "@/assets/js/area";
 import { Notify } from "vant";
 import Panel from "@/components/common/Panel";
-import { formatDate } from "@/assets/tools";
+import { formatDate } from "@/assets/js/tools";
 
 export default {
   components: { Panel },
@@ -64,7 +64,12 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted() {
+    // Notify({
+    //   type: "success",
+    //   message: "点击右上角切换省份"
+    // });
+  },
 
   methods: {
     areaToggle() {
@@ -106,7 +111,7 @@ export default {
       const news = this.$api.message.news;
       const province = this.province;
       const num = (this.num += 5);
-      console.log(num);
+      // console.log(num);
 
       news(province, num).then(res => {
         this.loading = false;
@@ -124,7 +129,7 @@ export default {
           data[i].pubDate = date;
         }
         this.data = data;
-        console.log(this.data);
+        // console.log(this.data);
       });
     }
   }
