@@ -11,7 +11,7 @@ import Panel from "@/components/common/Panel";
 import F2 from "@antv/f2/lib/index";
 import { formatDate } from "@/assets/js/tools";
 import ScrollBar from "@antv/f2/lib/plugin/scroll-bar";
-import pan from "@antv/f2/lib/interaction/pan";
+// import pan from "@antv/f2/lib/interaction/pan";
 // import Gesture from "@antv/f2/lib/plugin/gesture";
 
 export default {
@@ -49,7 +49,7 @@ export default {
         }
 
         // 只保留中国 抽出湖北
-        const finalData = data.filter((item, i) => {
+        const finalData = data.filter(item => {
           return item.country === "中国" && item.provinceShortName !== "湖北";
         });
 

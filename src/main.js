@@ -4,7 +4,6 @@ import api from './request/api/index'
 import router from './router'
 import vantTools from '@/assets/js/vantTools'
 import antvTools from '@/assets/js/antvTools'
-
 import {
   Panel,
   Toast,
@@ -23,10 +22,6 @@ import {
   Collapse,
   CollapseItem,
 } from 'vant'
-
-
-
-
 
 Vue.use(router)
 Vue.use(Tabbar)
@@ -50,11 +45,6 @@ Vue.config.productionTip = false
 Vue.prototype.$api = api
 Vue.prototype.$vantTools = vantTools
 Vue.prototype.$antvTools = antvTools
-
-
-
-
-
 
 new Vue({
   router,
