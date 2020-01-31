@@ -12,6 +12,14 @@
           :name="props.active ? icon.trend.active : icon.trend.inactive"
         />
       </van-tabbar-item>
+      <van-tabbar-item replace to="/news">
+        <span>动态</span>
+        <van-icon
+          slot="icon"
+          slot-scope="props"
+          :name="props.active ? icon.news.active : icon.news.inactive"
+        />
+      </van-tabbar-item>
       <van-tabbar-item replace to="/message" icon="search">
         <span>消息</span>
         <van-icon
@@ -39,6 +47,10 @@ export default {
         msg: {
           active: "volume",
           inactive: "volume-o"
+        },
+        news: {
+          active: "location",
+          inactive: "location-o"
         }
       }
     };
@@ -46,11 +58,11 @@ export default {
 
   mounted() {
     Notify({
-      type: "warning",
+      type: "success",
       message: "数据接口源于网络，仅供参考！"
     });
 
-    this.$router.push({name: 'trend'});  // bad
+    this.$router.push("/trend");
   }
 };
 </script>
@@ -58,7 +70,21 @@ export default {
 <style>
 #app {
   width: 100vw;
-  overflow-x: hidden;
-  margin-bottom: 50px;
+  margin: 46px 0 50px;
+}
+
+.van-picker {
+  position: fixed;
+  bottom: 50px;
+  width: 100vw;
+  z-index: 10;
+}
+
+.van-nav-bar {
+  /* background-color: #13C2C2; */
+}
+
+.van-nav-bar__title {
+  /* color: #fff; */
 }
 </style>

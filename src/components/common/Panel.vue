@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <van-panel :title="panelData.title" :desc="panelData.desc" :status="panelData.status">
+  <div id="news">
+    <van-panel
+      :title="panelData.title"
+      :desc="panelData.desc"
+      :status="panelData.status"
+      :icon="panelData.icon||''"
+    >
       <div>
         <slot></slot>
       </div>
@@ -24,6 +29,3 @@ export default {
   methods: {}
 };
 </script>
-
-<style scoped>
-</style>

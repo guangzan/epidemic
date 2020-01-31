@@ -21,7 +21,6 @@ export default {
         status: "对比"
       },
 
-
       data: [
         {
           date: "22",
@@ -52,7 +51,7 @@ export default {
           date: "24",
           type: "疑似",
           value: 500
-        },
+        }
       ]
     };
   },

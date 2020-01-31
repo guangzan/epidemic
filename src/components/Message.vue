@@ -1,5 +1,6 @@
 <template>
   <div>
+    <van-nav-bar title="消息" fixed />
     <Panel :panelData="panelData">
       <Skeleton :loading="loading">
         <van-cell-group>
@@ -34,7 +35,7 @@ export default {
   data() {
     return {
       panelData: {
-        title: "消息 📢",
+        title: "📜 消息",
         desc: "病毒研究情况以及全国疫情概览",
         status: ""
       },

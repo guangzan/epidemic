@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div id="trend">
+    <van-nav-bar title="趋势" fixed />
     <ProvinceConfirmed />
     <Diagnose />
     <!-- <Cure />
@@ -22,3 +23,11 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+#trend {
+  width: 100vw;
+  overflow: hidden;
+}
+</style>

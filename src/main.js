@@ -12,8 +12,13 @@ import {
   Cell,
   CellGroup,
   Area,
-  Notify
+  Notify,
+  Image,
+  List,
+  Lazyload,
+  NavBar,
 } from 'vant'
+
 
 
 Vue.use(router)
@@ -27,6 +32,10 @@ Vue.use(Cell);
 Vue.use(CellGroup);
 Vue.use(Area);
 Vue.use(Notify);
+Vue.use(Image);
+Vue.use(List);
+Vue.use(Lazyload);
+Vue.use(NavBar);
 
 Vue.config.productionTip = false
 Vue.prototype.$api = api

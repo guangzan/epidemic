@@ -1,5 +1,5 @@
 /**
- * 数据
+ * 数据相关
  */
 
 import base from './base' // 导入接口域名列表
@@ -18,7 +18,7 @@ const charts = {
     );
   },
 
-
+  // 全国数据
   province() {
     return get(
       `${base.sq}/province`,

@@ -68,11 +68,12 @@ export default {
 
       area(this.province).then(res => {
         if (res.results[0] === undefined) {
-          console.log(data);
           Notify("暂无数据");
           return;
         }
         const data = res.results[0].cities;
+        console.log(res);
+
         this.data = data;
         this.createChart();
       });
@@ -82,6 +83,7 @@ export default {
     createChart() {
       const chart = new F2.Chart({
         id: "cure",
+        padding: 'auto',
         pixelRatio: window.devicePixelRatio // 指定分辨率
       });
 
@@ -98,10 +100,4 @@ export default {
 </script>
 
 <style scoped>
-.van-picker {
-  position: fixed;
-  bottom: 50px;
-  width: 100vw;
-  z-index: 10;
-}
 </style>
