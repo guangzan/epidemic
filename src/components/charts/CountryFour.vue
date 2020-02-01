@@ -1,7 +1,7 @@
 <template>
   <div>
     <Panel :panelData="panelData">
-      <canvas id="country-four" width="350" height="330"></canvas>
+      <canvas id="country-four"></canvas>
     </Panel>
   </div>
 </template>
@@ -23,9 +23,12 @@ export default {
         desc: "",
         status: "全国"
       },
-      data: []
+      data: [],
+      count: "",
+      title: ""
     };
   },
+
   mounted() {
     this.getData();
   },
@@ -55,26 +58,30 @@ export default {
           {
             const: "const",
             type: "确诊人数",
-            value: confirmedCount
-          },
-          {
-            const: "const",
-            type: "疑似人数",
-            value: suspectedCount
+            value: confirmedCount,
+            a: 1
           },
           {
             const: "const",
             type: "治愈人数",
-            value: curedCount
+            value: curedCount,
+            a: 1
+          },
+          {
+            const: "const",
+            type: "疑似人数",
+            value: suspectedCount,
+            a: 1
           },
           {
             const: "const",
             type: "死亡人数",
-            value: deadCount
+            value: deadCount,
+            a: 1
           }
         ];
 
-        console.log(this.data);
+        // console.log(this.data);
         this.createChart();
       });
     },
@@ -82,56 +89,137 @@ export default {
     // 创建图表
     createChart() {
       const data = this.data;
+      // console.log(data);
+
+      // 饼图
+      // const chart = new F2.Chart({
+      //   id: "country-four",
+      //   pixelRatio: window.devicePixelRatio
+      // });
+
+      // chart.source(data);
+      // chart.coord("polar", {
+      //   transposed: true,
+      //   radius: 0.9,
+      //   innerRadius: 0.5
+      // });
+      // chart.axis(false);
+      // chart.legend(false);
+      // chart.tooltip(false);
+      // chart.guide().html({
+      //   position: ["50%", "50%"],
+      //   html: `
+      //     <div style="text-align: center;width:150px;height: 50px;">\n
+      //       <p style="font-size: 12px;color: #999;margin: 0" ref='title' id="title" ></p>\n
+      //       <p style="font-size: 18px;color: #343434;margin: 0;font-weight: bold;"  ref='value' id="value"></p>\n
+      //     </div>
+      //   `
+      // });
+
+      // chart
+      //   .interval()
+      //   .position("const*value")
+      //   .adjust("stack")
+      //   .color("type", ["#1890FF", "#13C2C2", "#2FC25B", "#FACC14"]);
+
+      // let self = this;
+      // chart.pieLabel({
+      //   sidePadding: 10,
+      //   activeShape: true,
+      //   label1(data) {
+      //     return {
+      //       text: data.value,
+      //       fill: "#343434",
+      //       fontWeight: "bold"
+      //     };
+      //   },
+      //   label2(data) {
+      //     return {
+      //       text: data.type,
+      //       fill: "#999"
+      //     };
+      //   },
+      //   onClick(ev) {
+      //     const data = ev.data;
+      //     if (data) {
+      //       const type = data.type;
+      //       const value = data.value;
+      //       // 如何更新视图 ？
+      //     }
+      //   }
+      // });
+      // chart.render();
+
+      // 南丁格尔玫瑰图 bug： 只显示两个
+      // const chart = new F2.Chart({
+      //   id: "country-four",
+      //   pixelRatio: window.devicePixelRatio
+      // });
+      // chart.source(data);
+      // chart.coord("polar");
+      // chart.legend({
+      //   position: "right"
+      // });
+      // chart.axis(false);
+      // chart
+      //   .interval()
+      //   .position("type*value")
+      //   .color("type")
+      //   .style({
+      //     lineWidth: 1,
+      //     stroke: "#fff"
+      //   });
+      // chart.render();
+
+      // 饼图半圆
       const chart = new F2.Chart({
         id: "country-four",
+        // width: 300,
+        // height: 270,
         pixelRatio: window.devicePixelRatio
       });
-
       chart.source(data);
+      chart.legend({
+        position: "bottom",
+        align: "center"
+      });
       chart.coord("polar", {
         transposed: true,
-        radius: 0.9,
-        innerRadius: 0.5
+        startAngle: -Math.PI,
+        endAngle: 0
       });
       chart.axis(false);
-      chart.legend(false);
-      chart.tooltip(false);
-      chart.guide().html({
-        position: ["50%", "50%"],
-        html:
-          '<div style="text-align: center;width:150px;height: 50px;">\n      <p style="font-size: 12px;color: #999;margin: 0" id="title"></p>\n      <p style="font-size: 18px;color: #343434;margin: 0;font-weight: bold;" id="value"></p>\n      </div>'
-      });
-
       chart
         .interval()
-        .position("const*value")
-        .adjust("stack")
-        .color("type", ["#1890FF", "#13C2C2", "#2FC25B", "#FACC14"]);
+        .position("a*value")
+        .color("type", [
+          "#1890FF",
+          "#13C2C2",
+          "#2FC25B",
+          "#FACC14",
+          "#F04864",
+          "#8543E0"
+        ])
+        .adjust("stack");
 
       chart.pieLabel({
         sidePadding: 10,
         activeShape: true,
-        label1: function label1(data) {
+        label1(data) {
           return {
             text: data.value,
             fill: "#343434",
             fontWeight: "bold"
           };
         },
-        label2: function label2(data) {
+        label2(data) {
           return {
             text: data.type,
             fill: "#999"
           };
         }
-        // onClick: function onClick(ev) {
-        //   const data = ev.data;
-        //   if (data) {
-        //     $("#title").text(data.type);
-        //     $("#value").text(data.value);
-        //   }
-        // }
       });
+
       chart.render();
     }
   }

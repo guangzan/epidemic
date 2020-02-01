@@ -10,9 +10,6 @@
 import Panel from "@/components/common/Panel";
 import F2 from "@antv/f2/lib/index";
 import { formatDate } from "@/assets/js/tools";
-import ScrollBar from "@antv/f2/lib/plugin/scroll-bar";
-// import pan from "@antv/f2/lib/interaction/pan";
-// import Gesture from "@antv/f2/lib/plugin/gesture";
 
 export default {
   name: "ProvinceTrend",
@@ -58,79 +55,62 @@ export default {
       });
     },
 
-    // 创建图标
+    // 创建图表
     createChart() {
       const data = this.data;
-
-      // 通过横坐标定义初始显示的数据，剩余的数据通过滑动显示
-      const originProvinces = [
-        "浙江",
-        "广东",
-        "台湾",
-        "江苏",
-        "内蒙古",
-        "云南"
-      ];
-
-    //   const originProvinces = []
-    //   data.forEach(function(obj, index) {
-    //     if (index > 6) {
-    //       originProvinces.push(obj.provinceShortName);
-    //       console.log(originProvinces);
-    //     }
-    //   });
+      data.forEach((obj, index) => {
+        obj.index = index;
+      });
+      // console.log(data);
 
       const chart = new F2.Chart({
         id: "province-trend",
-        plugins: [ScrollBar],
         pixelRatio: window.devicePixelRatio
       });
-
       chart.source(data, {
-        provinceShortName: {
-          tickCount: 5,
-          values: originProvinces,
-          type: "cat"
-        },
-        confirmedCount: {
-          tickCount: 5
+        index: {
+          min: 0,
+          max: 5
         }
       });
-
-      chart
-        .interval()
-        .position("provinceShortName*confirmedCount")
-        .color("provinceShortName");
-
       chart.tooltip({
-        showItemMarker: true,
-        background: {
-          radius: 2,
-          padding: [3, 5]
-        },
         onShow(ev) {
           const items = ev.items;
-          items[0].name = items[0].title;
+          const title = data[items[0].title].provinceShortName
+          items[0].name = title;
           items[0].value = items[0].value + " 人";
         }
       });
+      chart
+        .interval()
+        .position("index*confirmedCount")
+        .color("confirmedCount");
 
-      // 是否显示图例
-      chart.legend(false);
+      // 重点来了
+      // 因为横坐标为了能够横向滚动，使用了 index ，
+      // 现在将他换成省份
+      chart.axis("index", {
+        label(text) {
+          return {
+            fontSize: 14,
+            text: data[text].provinceShortName
+          };
+        }
+      });
 
       chart.interaction("pan");
-
       // 定义进度条
       chart.scrollBar({
         mode: "x",
         xStyle: {
-          backgroundColor: "#e8e8e8",
-          fillerColor: "#808080",
-          offsetY: -2
+          offsetY: -5
         }
       });
 
       chart.render();
+
+      // 绘制柱状图文本
+      // this.$antvTools.painColText(chart, data);
     }
   }
 };

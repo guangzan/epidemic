@@ -33,7 +33,8 @@ export default {
         { genre: "1月27日", sold: 4515 },
         { genre: "1月28日", sold: 5974 },
         { genre: "1月29日", sold: 7711 },
-        { genre: "1月30日", sold: 9097 } // 31日 7：57
+        { genre: "1月30日", sold: 9097 }, // 01-31 7：57
+        { genre: "1月31日", sold: 9829 }, // 02-01 3：15
       ]
     };
   },

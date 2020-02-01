@@ -121,25 +121,7 @@ export default {
       chart.render();
 
       // 绘制柱状图文本
-      this.$antvTools.painColText(chart,data)
-      // const offset = -5;
-      // const canvas = chart.get("canvas");
-      // const group = canvas.addGroup();
-      // const shapes = {};
-      // data.forEach(function(obj) {
-      //   const point = chart.getPosition(obj);
-      //   const text = group.addShape("text", {
-      //     attrs: {
-      //       x: point.x,
-      //       y: point.y + offset,
-      //       text: obj.confirmedCount,
-      //       textAlign: "center",
-      //       textBaseline: "bottom",
-      //       fill: "#808080"
-      //     }
-      //   });
-      //   shapes[obj.year] = text; // 缓存该 shape, 便于后续查找
-      // });
+      this.$antvTools.painColText(chart,data);
     }
   }
 };

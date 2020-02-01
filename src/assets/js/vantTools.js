@@ -1,10 +1,10 @@
 import { Notify } from "vant";
 
 export default {
-    notify(msg, color) {
+    notify(msg, color, duration=1000) {
         Notify({
             type: color,
-            duration: 1000,
+            duration,
             message: msg
         });
     },

@@ -1,8 +1,11 @@
 <template>
   <div id="app">
+    <!-- router-view-start -->
     <keep-alive>
       <router-view />
     </keep-alive>
+    <!-- router-view-end -->
+    <!-- sideBar-start -->
     <van-tabbar route @change="changeSideBar">
       <van-tabbar-item replace to="/trend">
         <span>趋势</span>
@@ -29,6 +32,7 @@
         />
       </van-tabbar-item>
     </van-tabbar>
+    <!-- sideBar-end -->
   </div>
 </template>
 
@@ -58,7 +62,16 @@ export default {
 
   mounted() {
     const notify = this.$vantTools.notify;
-    notify("数据接口源于网络，仅供参考！","success");
+    notify("仅供学习交流之用，祝好！", "success");
+    setTimeout(() => {
+      notify("本人精力有限", "warning");
+    }, 1500);
+    setTimeout(() => {
+      notify("最后一张表通过长按查看具体数据", "warning", 2000);
+    }, 2000);
+    setTimeout(() => {
+      notify("出门一定戴口罩 🙃", "success");
+    }, 6000);
     this.$router.push("/trend");
   },
 
@@ -97,11 +110,11 @@ export default {
   z-index: 10;
 }
 
-.van-nav-bar {
-  /* background-color: #F9F0FF; */
+/* .van-nav-bar {
+  background-color: #F9F0FF;
 }
 
 .van-nav-bar__title {
-  /* color: #fff; */
-}
+  color: #fff;
+} */
 </style>
