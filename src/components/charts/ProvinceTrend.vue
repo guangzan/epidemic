@@ -23,7 +23,8 @@ export default {
         desc: "实时数据",
         status: "全国各省"
       },
-      data: []
+      data: [],
+      huBeiData:{},
     };
   },
   mounted() {
@@ -50,6 +51,11 @@ export default {
           return item.country === "中国" && item.provinceShortName !== "湖北";
         });
 
+        const huBeiData = data.filter(item => {
+          return item.provinceShortName === "湖北";
+        });
+
+        this.panelData.desc = `湖北省确诊：${huBeiData[0].confirmedCount}人`;
         this.data = finalData;
         this.createChart();
       });
