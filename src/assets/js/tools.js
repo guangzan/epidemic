@@ -1,8 +1,8 @@
-// formats格式包括
-// 1. Y-m-d
-// 2. Y-m-d H:i:s
-// 3. Y年m月d日
-// 4. Y年m月d日 H时i分
+/**
+ *
+ * @param {*} timestamp
+ * @param {*} formats Y-m-d | Y-m-d H:i:s | Y年m月d日 | Y年m月d日 H时i分
+ */
 const formatDate = (timestamp, formats) => {
 
     formats = formats || 'Y-m-d';
@@ -46,8 +46,11 @@ const groupBy = (arr, fn) =>
         return acc;
     }, {});
 
-// Diagnose.vue 数组对象去重
-// name 根据哪一项去重
+/**
+ * 数组去重
+ * @param {*} arr
+ * @param {*} name 根据哪一项去重
+ */
 const filterArray = (arr, name) => {
     var hash = {};
     return arr.reduce(function (item, next) {
@@ -56,7 +59,10 @@ const filterArray = (arr, name) => {
     }, []);
 }
 
-// 深拷贝
+/**
+ * 深拷贝
+ * @param {*} source
+ */
 const deepClone = source => {
     const targetObj = source.constructor === Array ? [] : {};
     for (let keys in source) {

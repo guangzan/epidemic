@@ -37,7 +37,9 @@
 </template>
 
 <script>
-// import { Notify } from "vant";
+import { Notify } from "vant";
+import "@/assets/css/common.css";
+
 export default {
   name: "app",
   components: {},
@@ -79,7 +81,7 @@ export default {
     // 切换 sidebar
     changeSideBar(active) {
       const notify = this.$vantTools.notify;
-      this.$vantTools.clearNotify();
+      Notify.clear();
       const actions = {
         1: () => {
           notify("点击右上角切换省份", "primary");
@@ -96,25 +98,3 @@ export default {
   }
 };
 </script>
-
-<style>
-#app {
-  width: 100vw;
-  margin: 46px 0 50px;
-}
-
-.van-picker {
-  position: fixed;
-  bottom: 50px;
-  width: 100vw;
-  z-index: 10;
-}
-
-/* .van-nav-bar {
-  background-color: #F9F0FF;
-}
-
-.van-nav-bar__title {
-  color: #fff;
-} */
-</style>

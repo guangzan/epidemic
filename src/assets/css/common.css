@@ -1,0 +1,11 @@
+#app {
+    width: 100vw;
+    margin: 46px 0 50px;
+}
+
+.van-picker {
+    position: fixed;
+    bottom: 50px;
+    width: 100vw;
+    z-index: 10;
+}

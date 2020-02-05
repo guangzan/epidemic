@@ -1,6 +1,7 @@
 import { Notify } from "vant";
 
 export default {
+    // vant 提示
     notify(msg, color, duration=1000) {
         Notify({
             type: color,
@@ -8,8 +9,4 @@ export default {
             message: msg
         });
     },
-
-    clearNotify() {
-        Notify.clear();
-    }
 }

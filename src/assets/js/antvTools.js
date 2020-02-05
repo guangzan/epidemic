@@ -1,7 +1,9 @@
 export default {
-    // 绘制柱状图文本
-    // data 渲染该图的所有数据数据
-    // chart 图表实例
+    /**
+     * 绘制柱状图文本 顶部
+     * @param {*} chart 图表实例
+     * @param {*} data 渲染该图的所有数据数据
+     */
     painColText(chart, data) {
         const offset = -3;
         const canvas = chart.get("canvas");
