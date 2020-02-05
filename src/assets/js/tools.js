@@ -36,31 +36,15 @@ const formatDate = (timestamp, formats) => {
     });
 }
 
-// Diagnose.vue 处理数据
-const mergeData = arr => {
-    var newArr = [];
-    arr.forEach(item => {
-        var dataItem = item
-        if (newArr.length > 0) {
-            var filterValue = newArr.filter(v => {
-                return v.updateTime == dataItem.updateTime
-            })
-            if (filterValue.length > 0) {
-                newArr.forEach(n => {
-                    if (n.updateTime == filterValue[0].updateTime) {
-                        n.confirmedCount = filterValue[0].confirmedCount + dataItem.confirmedCount
-                    }
-                })
-            } else {
-                newArr.push(dataItem)
-            }
-        } else {
-            newArr.push(dataItem)
-        }
-
-    })
-    return newArr
-}
+/**
+ * 对象数组分组
+ * @param {*} arr  原始数组
+ */
+const groupBy = (arr, fn) =>
+    arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val, i) => {
+        acc[val] = (acc[val] || []).concat(arr[i]);
+        return acc;
+    }, {});
 
 // Diagnose.vue 数组对象去重
 // name 根据哪一项去重
@@ -91,8 +75,8 @@ const deepClone = source => {
 
 export {
     formatDate,
-    mergeData,
     filterArray,
-    deepClone
+    groupBy,
+    deepClone,
 }
 

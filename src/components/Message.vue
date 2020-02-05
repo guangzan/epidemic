@@ -89,7 +89,7 @@ export default {
         } = res.results[0]);
 
         const updateTime = this.message.updateTime;
-        this.message.updateTime = formatDate(updateTime, "Y年m月d日");
+        this.message.updateTime = formatDate(updateTime, "Y年m月d日 H时");
 
         this.loading = false;
       });

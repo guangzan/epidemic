@@ -174,13 +174,11 @@ export default {
       // 饼图半圆
       const chart = new F2.Chart({
         id: "country-four",
-        // width: 300,
-        // height: 270,
         pixelRatio: window.devicePixelRatio
       });
       chart.source(data);
       chart.legend({
-        position: "bottom",
+        position: "top",
         align: "center"
       });
       chart.coord("polar", {

@@ -2,30 +2,27 @@
   <div id="trend">
     <van-nav-bar title="趋势" fixed />
     <ProvinceDiagnose />
-    <CountryDiagnose />
+    <ProvinceDateTrend />
+    <!-- <CountryTrend /> -->
     <CountryFour />
     <ProvinceTrend />
-    <!-- <Cure />
-    <Correlation />-->
   </div>
 </template>
 
  <script>
-import CountryDiagnose from "@/components/charts/CountryDiagnose";
+// import CountryTrend from "@/components/charts/CountryTrend";
 import ProvinceDiagnose from "@/components/charts/ProvinceDiagnose";
 import ProvinceTrend from "@/components/charts/ProvinceTrend";
+import ProvinceDateTrend from "@/components/charts/ProvinceDateTrend";
 import CountryFour from "@/components/charts/CountryFour";
-// import Cure from "@/components/charts/Cure";
-// import Correlation from "@/components/charts/Correlation";
 
 export default {
   components: {
-    CountryDiagnose,
-    // Cure,
-    // Correlation,
     ProvinceDiagnose,
     ProvinceTrend,
+    ProvinceDateTrend,
     CountryFour,
+    // CountryTrend,
   }
 };
 </script>

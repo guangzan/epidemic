@@ -67,7 +67,7 @@ export default {
       notify("本人精力有限", "warning");
     }, 1500);
     setTimeout(() => {
-      notify("最后一张表通过长按查看具体数据", "warning", 2000);
+      notify("通过长按查看具体数据", "warning", 2000);
     }, 2000);
     setTimeout(() => {
       notify("出门一定戴口罩 🙃", "success");

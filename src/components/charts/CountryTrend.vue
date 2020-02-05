@@ -9,7 +9,7 @@
 <script>
 import Panel from "@/components/common/Panel";
 import F2 from "@antv/f2/lib/index";
-import { formatDate } from "@/assets/js/tools";
+import { formatDate,groupBy } from "@/assets/js/tools";
 import ScrollBar from "@antv/f2/lib/plugin/scroll-bar";
 import pan from "@antv/f2/lib/interaction/pan";
 
@@ -34,7 +34,7 @@ export default {
         { genre: "1月28日", sold: 5974 },
         { genre: "1月29日", sold: 7711 },
         { genre: "1月30日", sold: 9097 }, // 01-31 7：57
-        { genre: "1月31日", sold: 9829 }, // 02-01 3：15
+        { genre: "1月31日", sold: 9829 } // 02-01 3：15
       ]
     };
   },
@@ -45,17 +45,23 @@ export default {
   methods: {
     // 请求数据
     getAreaData() {
-      const province = this.$api.charts.province;
+      const provinceLatest = this.$api.charts.provinceLatest;
 
-      province("全国").then(res => {
+      provinceLatest().then(res => {
         const data = res.results;
-        console.log("原始数据", data);
+
+        // 只保留中国
+        const cnData = data.filter(item => {
+          return item.country === "中国";
+        });
 
         // 时间戳全部转为日期
-        for (let i = 0; i < data.length; i++) {
-          const date = formatDate(data[i].updateTime);
-          data[i].updateTime = date;
+        for (let i = 0; i < cnData.length; i++) {
+          const date = formatDate(cnData[i].updateTime);
+          cnData[i].updateTime = date;
         }
+
+      // console.log(groupBy(cnData,'provinceName'));
       });
     },
 

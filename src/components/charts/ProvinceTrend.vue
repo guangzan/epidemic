@@ -92,7 +92,6 @@ export default {
         .position("index*confirmedCount")
         .color("confirmedCount");
 
-      // 重点来了
       // 因为横坐标为了能够横向滚动，使用了 index ，
       // 现在将他换成省份
       chart.axis("index", {
