@@ -4,17 +4,21 @@
     <Panel :panelData="panelData">
       <Skeleton :loading="loading">
         <van-cell-group>
-          <!-- <van-cell title="说明" :value="message.generalRemark">
-            <van-icon slot="icon" name="volume-o" size="1.5em" style="line-height: 1.2em;" />
-          </van-cell> -->
-
           <van-collapse accordion v-model="activeNames">
-            <van-collapse-item icon='volume-o' title="说明" name="generalRemark">{{message.generalRemark}}</van-collapse-item>
-            <van-collapse-item icon='warn-o' title="病毒名称" name="virus">{{message.virus}}</van-collapse-item>
-            <van-collapse-item icon='warn-o' title="传染源" name="infectSource">{{message.infectSource}}</van-collapse-item>
-            <van-collapse-item icon='warn-o' title="传播途径" name="passWay">{{message.passWay}}</van-collapse-item>
-            <van-collapse-item icon='friends-o' title="易感人群" name="remark1">{{message.remark1}}</van-collapse-item>
-            <van-collapse-item icon='todo-list-o' title="潜伏期" name="remark2">{{message.remark2}}</van-collapse-item>
+            <van-collapse-item
+              icon="volume-o"
+              title="说明"
+              name="generalRemark"
+            >{{message.generalRemark}}</van-collapse-item>
+            <van-collapse-item icon="warn-o" title="病毒名称" name="virus">{{message.virus}}</van-collapse-item>
+            <van-collapse-item
+              icon="warn-o"
+              title="传染源"
+              name="infectSource"
+            >{{message.infectSource}}</van-collapse-item>
+            <van-collapse-item icon="warn-o" title="传播途径" name="passWay">{{message.passWay}}</van-collapse-item>
+            <van-collapse-item icon="friends-o" title="易感人群" name="remark1">{{message.remark1}}</van-collapse-item>
+            <van-collapse-item icon="todo-list-o" title="潜伏期" name="remark2">{{message.remark2}}</van-collapse-item>
           </van-collapse>
 
           <van-cell title="确诊人数" icon="warning-o" :value="message.confirmedCount" />
@@ -41,7 +45,7 @@ export default {
 
   data() {
     return {
-      activeNames: 'generalRemark',
+      activeNames: "generalRemark",
       panelData: {
         title: "消息",
         desc: "病毒研究情况以及全国疫情概览",
@@ -74,14 +78,15 @@ export default {
       const overall = this.$api.message.overall;
 
       overall().then(res => {
+        console.log(res);
         ({
-          infectSource: this.message.infectSource,
-          passWay: this.message.passWay,
+          note2: this.message.infectSource,
+          note3: this.message.passWay,
           confirmedCount: this.message.confirmedCount,
           suspectedCount: this.message.suspectedCount,
           curedCount: this.message.curedCount,
           deadCount: this.message.deadCount,
-          virus: this.message.virus,
+          note1: this.message.virus,
           remark1: this.message.remark1,
           remark2: this.message.remark2,
           generalRemark: this.message.generalRemark,
@@ -99,4 +104,6 @@ export default {
 </script>
 
 <style scoped>
+
+
 </style>
