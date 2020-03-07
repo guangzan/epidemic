@@ -6,32 +6,13 @@
 url: https://guangzan.gitee.io/epidemic
 
 ## 截图
-<img src='https://guangzan.gitee.io/epidemic/docs/img/1.1.png'/><br />
 
----
+<img src='https://guangzan.gitee.io/blogbed/epidemic/trend.png'/><br />
+<img src='https://guangzan.gitee.io/blogbed/epidemic/news.png'/><br />
+<img src='https://guangzan.gitee.io/blogbed/epidemic/message.png'/><br />
 
-<img src='https://guangzan.gitee.io/epidemic/docs/img/1.2.png'/><br />
 
----
 
-<img src='https://guangzan.gitee.io/epidemic/docs/img/1.3.png'/><br />
-
----
-
-<img src='https://guangzan.gitee.io/epidemic/docs/img/1.4.png'/><br />
-
----
-
-<img src='https://guangzan.gitee.io/epidemic/docs/img/1.5.png'/><br />
-
----
-
-<img src='https://guangzan.gitee.io/epidemic/docs/img/2.png'/><br />
-
----
-<img src='https://guangzan.gitee.io/epidemic/docs/img/3.png'/><br />
-
----
 
 
 ## 感谢
