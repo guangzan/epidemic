@@ -5,9 +5,10 @@
 
 ## 截图
 
-<img src='https://guangzan.gitee.io/blogbed/epidemic/trend.png'/><br />
+<img src='https://guangzan.gitee.io/blogbed/epidemic/trend1.png'/><br />
 <img src='https://guangzan.gitee.io/blogbed/epidemic/news.png'/><br />
 <img src='https://guangzan.gitee.io/blogbed/epidemic/message.png'/><br />
+<img src='https://guangzan.gitee.io/blogbed/epidemic/trend2.png'/><br />
 
 ## 运行
 
