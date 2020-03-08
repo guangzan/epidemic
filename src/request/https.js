@@ -15,7 +15,7 @@ const tip = msg => {
     Toast({
         message: msg,
         duration: 1000,
-        forbidClick: true
+        forbidClick: true,
     })
 }
 
@@ -27,8 +27,8 @@ const toLogin = () => {
     router.replace({
         path: '/login',
         query: {
-            redirect: router.currentRoute.fullPath
-        }
+            redirect: router.currentRoute.fullPath,
+        },
     })
 }
 
@@ -63,10 +63,10 @@ const errorHandle = (status, other) => {
 }
 
 // 创建axios实例
-var instance = axios.create({ timeout: 1000 * 12 })
+let instance = axios.create({ timeout: 1000 * 12 })
 // 设置post请求头
-instance.defaults.headers.post['Content-Type'] =
-    'application/x-www-form-urlencoded'
+instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+
 /**
  * 请求拦截器
  * 每次请求前，如果存在token则在请求头中携带token
@@ -111,7 +111,6 @@ instance.interceptors.response.use(
 
 export default instance
 
-
 /**
  * get方法，对应get请求
  * @param {String} url [请求的url地址]
@@ -119,17 +118,19 @@ export default instance
  */
 export function get(url, params) {
     return new Promise((resolve, reject) => {
-        axios.get(url, {
-            params: params
-        })
+        axios
+            .get(url, {
+                params: params,
+            })
             .then(res => {
-                resolve(res.data);
+                resolve(res.data)
             })
             .catch(err => {
                 reject(err.data)
             })
-    });
+    })
 }
+
 /**
  * post方法，对应post请求
  * @param {String} url [请求的url地址]
@@ -146,4 +147,3 @@ export function get(url, params) {
 //             })
 //     });
 // }
-
