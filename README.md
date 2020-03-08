@@ -1,19 +1,19 @@
-# epidemic
+# Epidemic
 
-💗 基于  AntV 和 Vue 的全国疫情数据可视化移动端项目，仅用作学习交流。
+💗 基于 AntV 和 Vue 的全国疫情数据可视化移动端项目，仅用作学习交流。
 [预览地址](https://guangzan.gitee.io/epidemic)
 
-## 截图
+## Capture
 
 <img src='https://guangzan.gitee.io/blogbed/epidemic/trend1.png'/><br />
 <img src='https://guangzan.gitee.io/blogbed/epidemic/news.png'/><br />
 <img src='https://guangzan.gitee.io/blogbed/epidemic/message.png'/><br />
 <img src='https://guangzan.gitee.io/blogbed/epidemic/trend2.png'/><br />
 
-## 运行
+## Run the build
 
-- 本地 `npm start`
-- 打包 `npm run build`
+-   `npm start`
+-   `npm run build`
 
 ## Contributing
 
@@ -23,7 +23,8 @@
 4. Push to the branch: git push origin your-new-feature
 5. Submit a pull request
 
-## 感谢
+## Thanks
+
 [BlankerL](https://github.com/BlankerL) 提供数据接口
 
 祝大家一切都好！
